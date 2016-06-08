@@ -1,0 +1,12 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t poppen/radikorec .
+
+test:
+  override:
+    - docker run -t -v `pwd`:/data/ -w=/data/ projectatomic/dockerfile-lint dockerfile_lint -f Dockerfile
