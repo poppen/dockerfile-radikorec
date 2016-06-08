@@ -6,7 +6,7 @@ RUN apt-get update && \
         software-properties-common
 RUN add-apt-repository ppa:mc3man/trusty-media && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         ffmpeg \
         swftools \
         python-pip \
