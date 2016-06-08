@@ -20,15 +20,15 @@ RUN add-apt-repository ppa:mc3man/trusty-media && \
 RUN mkdir /tmp/work
 
 WORKDIR /tmp/work
-RUN git clone git://git.ffmpeg.org/rtmpdump
-RUN curl -L https://github.com/K-S-V/Scripts/releases/download/v2.4/rtmpdump-2.4.zip > /tmp/work/rtmpdump-2.4.zip && \
+RUN git clone git://git.ffmpeg.org/rtmpdump && \
+    curl -L https://github.com/K-S-V/Scripts/releases/download/v2.4/rtmpdump-2.4.zip > /tmp/work/rtmpdump-2.4.zip && \
     unzip -x rtmpdump-2.4.zip
 
 WORKDIR /tmp/work/rtmpdump
 RUN patch -p0 < ../Patch.diff && \
     make SYS=posix && \
-    make install
-RUN ldconfig
+    make install && \
+    ldconfig
 
 WORKDIR /
 
