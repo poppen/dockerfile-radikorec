@@ -9,13 +9,14 @@ RUN add-apt-repository ppa:mc3man/trusty-media && \
     apt-get install -y --no-install-recommends \
         ffmpeg \
         swftools \
-        python-pip \
         build-essential \
         gcc \
         make \
         git \
         libssl-dev \
-        unzip
+        unzip \
+        libxml2-utils \
+        wget
 
 RUN mkdir /tmp/work
 
@@ -32,7 +33,11 @@ RUN patch -p0 < ../Patch.diff && \
 
 WORKDIR /
 
-RUN pip install radikorec
+ADD https://gist.githubusercontent.com/poppen/0e054e20947d56756c489f74c7f53d0e/raw/e1be7c511716d10f73e5b409e9a9537c3199fa4a/rec_radiru.sh /usr/local/bin/
+ADD https://gist.githubusercontent.com/poppen/1da36e6e5671df2c273d2c24e4ad23a7/raw/rec_radiko.sh /usr/local/bin/
+RUN chmod 0755 /usr/local/bin/rec_radiru.sh && \
+    chmod 0755 /usr/local/bin/rec_radiko.sh
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /tmp/work
 
 # Use baseimage-docker's init system.
