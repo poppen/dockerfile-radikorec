@@ -20,8 +20,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /tmp/work
-
 WORKDIR /tmp/work
 RUN git clone git://git.ffmpeg.org/rtmpdump && \
     curl -L https://github.com/K-S-V/Scripts/releases/download/v2.4/rtmpdump-2.4.zip > /tmp/work/rtmpdump-2.4.zip && \
