@@ -33,7 +33,7 @@ RUN git clone git://git.ffmpeg.org/rtmpdump \
 
 WORKDIR /
 
-ADD https://gist.githubusercontent.com/poppen/0e054e20947d56756c489f74c7f53d0e/raw/rec_radiru.sh /usr/local/bin/
+ADD https://gist.githubusercontent.com/poppen/93fe4d09f3fca0113139bf1e8d9d48c3/raw/rec_radiru.sh /usr/local/bin/
 ADD https://gist.githubusercontent.com/poppen/1da36e6e5671df2c273d2c24e4ad23a7/raw/rec_radiko.sh /usr/local/bin/
 RUN chmod 0755 /usr/local/bin/rec_radiru.sh \
     && chmod 0755 /usr/local/bin/rec_radiko.sh
